@@ -20,13 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cursorVisible="false"
-        app:hint="0"
+        app:hint=""
         app:inputType="number"
         app:forceKeyboard="true"
         app:password="false"
+        app:splitWidth="12dp"
         app:pinBackground="@drawable/example_drawable"
-        app:pinHeight="40dp"
-        app:pinLength="4"
+        app:pinHeight="60dp"
+        app:pinLength="6"
         app:pinWidth="40dp" />
 
     <TextView
