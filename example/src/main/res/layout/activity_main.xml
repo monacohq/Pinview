@@ -29,7 +29,8 @@
         app:pinHeight="60dp"
         app:pinLength="6"
         app:pinWidth="40dp"
-        app:pinTextColor="@android:color/background_dark"/>
+        app:pinTextColor="@android:color/background_dark"
+        app:pinTextSize="12sp"/>
 
     <TextView
         android:layout_width="match_parent"

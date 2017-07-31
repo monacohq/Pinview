@@ -12,6 +12,7 @@
         <attr name="hint" format="string"/>
         <attr name="inputType"/>
         <attr name="pinTextColor" format="reference"/>
+        <attr name="pinTextSize" format="dimension"/>
     </declare-styleable>
     <attr name="inputType" format="enum">
         <enum name="text" value="0"/>

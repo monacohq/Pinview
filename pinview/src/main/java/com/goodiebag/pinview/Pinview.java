@@ -86,7 +86,7 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
     private boolean fromSetValue = false;
     private boolean mForceKeyboard = true;
     private int mPinTextColor = android.R.color.primary_text_dark;
-
+    private int mPinTextSize = 16;
     public enum InputType {
         TEXT, NUMBER
     }
@@ -210,6 +210,7 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
             mPassword = array.getBoolean(R.styleable.Pinview_password, mPassword);
             mForceKeyboard = array.getBoolean(R.styleable.Pinview_forceKeyboard, mForceKeyboard);
             mPinTextColor = array.getResourceId(R.styleable.Pinview_pinTextColor, mPinTextColor);
+            mPinTextSize = (int) array.getDimension(R.styleable.Pinview_pinTextSize, mPinTextSize);
             mHint = array.getString(R.styleable.Pinview_hint);
             InputType[] its = InputType.values();
             inputType = its[array.getInt(R.styleable.Pinview_inputType, 0)];
@@ -249,6 +250,7 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
         styleEditText.setPadding(0, 0, 0, 0);
         styleEditText.setTag(tag);
         styleEditText.setTextColor(ContextCompat.getColor(this.getContext(), mPinTextColor));
+        styleEditText.setTextSize(mPinTextSize);
 
         int it;
         switch (inputType) {
