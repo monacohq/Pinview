@@ -25,6 +25,7 @@ import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -84,7 +85,7 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
     private PinViewEventListener mListener;
     private boolean fromSetValue = false;
     private boolean mForceKeyboard = true;
-
+    private int mPinTextColor = android.R.color.primary_text_dark;
 
     public enum InputType {
         TEXT, NUMBER
@@ -208,6 +209,7 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
             mCursorVisible = array.getBoolean(R.styleable.Pinview_cursorVisible, mCursorVisible);
             mPassword = array.getBoolean(R.styleable.Pinview_password, mPassword);
             mForceKeyboard = array.getBoolean(R.styleable.Pinview_forceKeyboard, mForceKeyboard);
+            mPinTextColor = array.getResourceId(R.styleable.Pinview_pinTextColor, mPinTextColor);
             mHint = array.getString(R.styleable.Pinview_hint);
             InputType[] its = InputType.values();
             inputType = its[array.getInt(R.styleable.Pinview_inputType, 0)];
@@ -246,6 +248,8 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
         styleEditText.setBackgroundResource(mPinBackground);
         styleEditText.setPadding(0, 0, 0, 0);
         styleEditText.setTag(tag);
+        styleEditText.setTextColor(ContextCompat.getColor(this.getContext(), mPinTextColor));
+
         int it;
         switch (inputType) {
             case NUMBER:
@@ -533,10 +537,10 @@ public class Pinview extends LinearLayout implements TextWatcher, View.OnFocusCh
         if ((editTextList.size() % 2) == 0 && editTextList.size() >= 6) {
             LinearLayout.LayoutParams paramsExtra = new LayoutParams(mPinWidth, mPinHeight);
 
-            paramsExtra.setMargins(margin, margin, margin*4, margin);
+            paramsExtra.setMargins(margin, margin, margin * 4, margin);
 
-            editTextList.get(editTextList.size()/2 -1).setLayoutParams(paramsExtra);
-            editTextList.get(editTextList.size()/2 -1).requestLayout();
+            editTextList.get(editTextList.size() / 2 - 1).setLayoutParams(paramsExtra);
+            editTextList.get(editTextList.size() / 2 - 1).requestLayout();
         }
     }
 
